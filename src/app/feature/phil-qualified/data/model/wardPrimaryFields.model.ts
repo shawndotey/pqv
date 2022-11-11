@@ -1,5 +1,4 @@
 export const wardPrimaryFields = [
-  {name: 'ward'},
   {name: 'dem'},
   {name: 'rep'},
   {name: 'other_party'},

@@ -1,8 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   OnDestroy,
   OnInit,
+  Output,
 } from '@angular/core';
 import { PqvDataService } from '../data/data.service';
 import { PqvCommonSharedModule } from 'src/app/shared/common-shared.module';
@@ -34,7 +36,7 @@ export class PqvSummaryComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private wardTotalsPipe: PqvWardTotalsPipe
     ) {}
-
+    @Output() selectedSegment: EventEmitter<string> = new EventEmitter()
   ngOnInit(): void {
     this.$wardDataTable = this.dataService
       .getData$()
@@ -44,14 +46,14 @@ export class PqvSummaryComponent implements OnInit, OnDestroy {
     
       this.form = this.fb.group({
         segment:['']
-      })
+      });
 
       this.form.controls['segment'].valueChanges.subscribe(value => {
         console.log('segment', value);
+        this.selectedSegment.emit(value);
       });
-
-      
   }
+
   ngOnDestroy(): void {
     this.$wardDataTable?.unsubscribe();
   }

@@ -10,7 +10,6 @@ import { wardPrimaryCategories } from './model/wardPrimaryCategories.model';
 export class PqvWardTotalsPipe implements PipeTransform {
   transform(wardTable: WardRow[]): WardRow[] {
     const totals = this.getAllTotals(wardTable);
-    console.log('totals', totals);
     return totals;
   }
   getAllTotals(wardTable: WardRow[]): WardRow[] {

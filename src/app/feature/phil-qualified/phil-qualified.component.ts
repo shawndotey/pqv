@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, EventEmitter } from '@angular/core';
 import { PqvCommonSharedModule } from 'src/app/shared/common-shared.module';
-import { PqvDataService } from './data/data.service';
 import { PqvDetailsComponent } from './details/details.component';
 import { PqvSummaryComponent } from './summary/summary.component';
 
@@ -13,10 +12,14 @@ import { PqvSummaryComponent } from './summary/summary.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PqvPhilQualifiedComponent implements OnInit {
-
-  constructor(dataService:PqvDataService) { }
-
+  
+  public segment: EventEmitter<string> = new EventEmitter();
+  
+  constructor() { }
+  
   ngOnInit(): void {
   }
-
+  segmentUpdate(value:string){
+    this.segment.emit(value);
+  }
 }

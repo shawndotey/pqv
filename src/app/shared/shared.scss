@@ -27,6 +27,11 @@
     .full{
       flex: 1;
     }
+    .table-full{
+      table-layout: fixed;
+      width: 100%;
+      display: table;
+    }
     .vertical{
       flex-direction: column;
     }

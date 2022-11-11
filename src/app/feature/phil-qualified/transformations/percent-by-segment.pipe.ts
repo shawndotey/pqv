@@ -22,7 +22,6 @@ export class PqvPercentBySegmentPipe implements PipeTransform {
     });
 
     const percent = parseFloat(((fieldTotal / sumTotal) * 100).toFixed(2)) ;
-    console.log('getSegmentPercent', sumTotal, fieldTotal, percent);
     return percent;
   }
 }

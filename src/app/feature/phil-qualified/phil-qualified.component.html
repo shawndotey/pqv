@@ -1,4 +1,4 @@
 
-  <pqv-summary></pqv-summary>
-  <pqv-details></pqv-details>
+  <pqv-summary (selectedSegment)="segmentUpdate($event)"></pqv-summary>
+  <pqv-details [segment]="(segment | async) || ''"></pqv-details>
 
