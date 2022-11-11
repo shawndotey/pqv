@@ -1,0 +1,31 @@
+<div class="center">
+  <div class="title">Philadelphia Qualified Voter Listing 2018</div>
+</div>
+<div class="container">
+  <div class="full vertical">
+    <div class="full title sub-title center">Top Segment of All Voters</div>
+
+    <div class="full center results">{{wardDataTable | topSegment | fieldDescription}}</div>
+  </div>
+
+  <div class="full vertical">
+    <div class="full title sub-title center">Percentage of All Voters that are</div>
+
+    <div class="full">
+      <div>
+        <form [formGroup]="form">
+          <mat-form-field appearance="fill">
+            <mat-label>Choose an option</mat-label>
+            <select matNativeControl formControlName="segment">
+              <option *ngFor="let field of wardPrimaryFields" [value]="field.name">
+                {{field.name | fieldDescription}}
+              </option>
+            </select>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="results">{{wardDataTable | percentBySegment:form.controls['segment'].value}}%</div>
+    </div>
+    
+  </div>
+</div>
