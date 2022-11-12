@@ -4,8 +4,8 @@ import { wardPrimaryCategories } from './model/wardPrimaryCategories.model';
 
 @Pipe({
   name: 'topSegment',
-  standalone: true, 
-  pure: true
+  standalone: true,
+  pure: true,
 })
 export class PqvTopSegmentPipe implements PipeTransform {
   transform(wardTable: WardRow[]): string {
@@ -14,18 +14,16 @@ export class PqvTopSegmentPipe implements PipeTransform {
   }
   getHighestSegment(originalWardTable: WardRow[]): string {
     let highestPrimaryField = 'none';
-        let highestCount = 0;
-    
+    let highestCount = 0;
+    //traverse table
     originalWardTable.forEach((originalWardRow) => {
       for (const categoryName in wardPrimaryCategories) {
         const fields = wardPrimaryCategories[categoryName].fields;
         let categoryTotal = 0;
-        //traverse table row
-        
-        //category column
+        //category columns
         fields.forEach((fieldName) => {
           const fieldValue = originalWardRow[fieldName as keyof WardRow];
-          if(fieldValue > highestCount){
+          if (fieldValue > highestCount) {
             highestCount = fieldValue;
             highestPrimaryField = fieldName;
           }

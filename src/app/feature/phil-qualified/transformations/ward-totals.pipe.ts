@@ -12,11 +12,10 @@ export class PqvWardTotalsPipe implements PipeTransform {
     const totals = this.getAllTotals(wardTable);
     return totals;
   }
-  getAllTotals(wardTable: WardRow[]): WardRow[] {
+  getAllTotals(originalWardTable: WardRow[]): WardRow[] {
     const tableResult: WardRow[] = [];
-
-    //traverse table row
-    wardTable.forEach((orignalWardRow) => {
+    //traverse table rows
+    originalWardTable.forEach((orignalWardRow) => {
       const wardRowResult = {
         the_geom: undefined,
         the_geom_webmercator: undefined,
@@ -41,6 +40,7 @@ export class PqvWardTotalsPipe implements PipeTransform {
       } as any;
 
       const originalTotal = orignalWardRow['total'];
+      const ward = orignalWardRow['ward'];
       //gather by category
       for (const categoryName in wardPrimaryCategories) {
         const fields = wardPrimaryCategories[categoryName].fields;
@@ -52,11 +52,11 @@ export class PqvWardTotalsPipe implements PipeTransform {
           wardRowResult[fieldName] = fieldValue;
         });
         wardRowResult['total'] = originalTotal;
+        wardRowResult['ward'] = ward;
         wardRowResult[categoryName + '-total'] = categoryTotal;
         //race does not seem to have the correct totals
         //show the differnce in any category not adding to the total
         wardRowResult[categoryName + '-delta'] = originalTotal - categoryTotal;
-        
       }
       tableResult.push(wardRowResult);
     });

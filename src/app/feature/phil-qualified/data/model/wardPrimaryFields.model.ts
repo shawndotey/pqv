@@ -2,7 +2,6 @@ export const wardPrimaryFields = [
   {name: 'dem'},
   {name: 'rep'},
   {name: 'other_party'},
-  {name: 'total'},
   {name: 'white'},
   {name: 'black'},
   {name: 'hispanic'},

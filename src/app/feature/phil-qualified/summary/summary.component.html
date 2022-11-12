@@ -11,7 +11,7 @@
   <div class="full vertical">
     <div class="full title sub-title center">Percentage of All Voters that are</div>
 
-    <div class="full">
+    <div class="full center">
       <div>
         <form [formGroup]="form">
           <mat-form-field appearance="fill">
@@ -24,7 +24,7 @@
           </mat-form-field>
         </form>
       </div>
-      <div class="results">{{wardDataTable | percentBySegment:form.controls['segment'].value}}%</div>
+      <div class="results center">{{wardDataTable | percentBySegment:form.controls['segment'].value}}%</div>
     </div>
     
   </div>

@@ -11,14 +11,12 @@ import { PqvSummaryComponent } from './summary/summary.component';
   styleUrls: ['./phil-qualified.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PqvPhilQualifiedComponent implements OnInit {
+export class PqvPhilQualifiedComponent {
   
   public segment: EventEmitter<string> = new EventEmitter();
   
   constructor() { }
-  
-  ngOnInit(): void {
-  }
+   
   segmentUpdate(value:string){
     this.segment.emit(value);
   }

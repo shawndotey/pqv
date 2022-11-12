@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { WardRow } from '../data/model/WardRow.interface';
-import { wardPrimaryCategories } from './model/wardPrimaryCategories.model';
 
 @Pipe({
   name: 'percentBySegment',
@@ -15,12 +14,13 @@ export class PqvPercentBySegmentPipe implements PipeTransform {
   getSegmentPercent(originalWardTable: WardRow[], fieldName: string): number {
     let sumTotal = 0;
     let fieldTotal = 0;
+
     originalWardTable.forEach((originalWardRow) => {
       const fieldValue = originalWardRow[fieldName as keyof WardRow];
       sumTotal = sumTotal + originalWardRow['total'];
       fieldTotal = fieldTotal + fieldValue;
     });
-
+    
     const percent = parseFloat(((fieldTotal / sumTotal) * 100).toFixed(2)) ;
     return percent;
   }

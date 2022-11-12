@@ -6,9 +6,7 @@ import { wardRowDecription } from './model/wardRowDecription.model';
   standalone: true
 })
 export class PqvFieldDescriptionPipe implements PipeTransform {
-
   transform(field: string): string {
    return (wardRowDecription as any)[field] || 'Unknown';
   }
-
 }
