@@ -5,7 +5,7 @@
   <div class="full vertical">
     <div class="full title sub-title center">Top Segment of All Voters</div>
 
-    <div class="full center results">{{wardDataTable | topSegment | fieldDescription}}</div>
+    <div class="full center results">{{topSegmentField.name | fieldDescription}} - {{topSegmentField.count}} - {{(wardDataTable | totalsBySegment:topSegmentField.name).percent}}%</div>
   </div>
 
   <div class="full vertical">
@@ -24,7 +24,7 @@
           </mat-form-field>
         </form>
       </div>
-      <div class="results center">{{wardDataTable | percentBySegment:form.controls['segment'].value}}%</div>
+      <div class="results center">{{segmentInfo.count}} - {{segmentInfo.percent}}%</div>
     </div>
     
   </div>

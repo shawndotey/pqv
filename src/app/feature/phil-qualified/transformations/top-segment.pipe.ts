@@ -8,11 +8,11 @@ import { wardPrimaryCategories } from './model/wardPrimaryCategories.model';
   pure: true,
 })
 export class PqvTopSegmentPipe implements PipeTransform {
-  transform(wardTable: WardRow[]): string {
-    const highestPrimaryField = this.getHighestSegment(wardTable);
-    return highestPrimaryField;
+  transform(wardTable: WardRow[]): any {
+    const primaryFieldTopValues = this.getHighestSegment(wardTable);
+    return primaryFieldTopValues;
   }
-  getHighestSegment(originalWardTable: WardRow[]): string {
+  getHighestSegment(originalWardTable: WardRow[]): any {
     let highestPrimaryField = 'none';
     let highestCount = 0;
     //traverse table
@@ -31,6 +31,6 @@ export class PqvTopSegmentPipe implements PipeTransform {
       }
     });
 
-    return highestPrimaryField;
+    return {name: highestPrimaryField, count: highestCount};
   }
 }

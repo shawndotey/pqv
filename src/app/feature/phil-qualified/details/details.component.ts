@@ -8,12 +8,12 @@ import { PqvWardTotalsPipe } from '../transformations/ward-totals.pipe';
 import { PqvFieldDescriptionPipe } from '../transformations/field-description.pipe';
 import { FormBuilder } from '@angular/forms';
 import { wardPrimaryFields } from '../data/model/wardPrimaryFields.model';
-import { PqvPercentBySegmentPipe } from '../transformations/percent-by-segment.pipe';
+import { PqvTotalsBySegmentPipe } from '../transformations/percent-by-segment.pipe';
 
 @Component({
   selector: 'pqv-details',
   standalone: true,
-  imports: [PqvCommonSharedModule, PqvFieldDescriptionPipe, PqvPercentBySegmentPipe],
+  imports: [PqvCommonSharedModule, PqvFieldDescriptionPipe, PqvTotalsBySegmentPipe],
   providers: [PqvWardTotalsPipe],
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss'],

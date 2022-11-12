@@ -2,16 +2,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { WardRow } from '../data/model/WardRow.interface';
 
 @Pipe({
-  name: 'percentBySegment',
+  name: 'totalsBySegment',
   standalone: true,
   pure: true,
 })
-export class PqvPercentBySegmentPipe implements PipeTransform {
-  transform(wardTable: WardRow[], segment: string): number {
-    const fieldPercent = this.getSegmentPercent(wardTable, segment);
-    return fieldPercent;
+export class PqvTotalsBySegmentPipe implements PipeTransform {
+  transform(wardTable: WardRow[], segment: string): any {
+    const fieldInfo = this.getSegmentPercent(wardTable, segment);
+    return fieldInfo;
   }
-  getSegmentPercent(originalWardTable: WardRow[], fieldName: string): number {
+  getSegmentPercent(originalWardTable: WardRow[], fieldName: string): any {
     let sumTotal = 0;
     let fieldTotal = 0;
 
@@ -20,8 +20,11 @@ export class PqvPercentBySegmentPipe implements PipeTransform {
       sumTotal = sumTotal + originalWardRow['total'];
       fieldTotal = fieldTotal + fieldValue;
     });
-    
+
     const percent = parseFloat(((fieldTotal / sumTotal) * 100).toFixed(2)) ;
-    return percent;
+    return {
+      percent,
+      count:fieldTotal
+    };
   }
 }
