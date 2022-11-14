@@ -1,11 +1,11 @@
 <div class="center">
-  <div class="title">Philadelphia Qualified Voter Listing 2018</div>
+  <div class="title">{{title}}</div>
 </div>
 <div class="container">
   <div class="full vertical">
     <div class="full title sub-title center">Top Segment of All Voters</div>
 
-    <div class="full center results">{{topSegmentField.name | fieldDescription}} - {{topSegmentField.count}} - {{(wardDataTable | totalsBySegment:topSegmentField.name).percent}}%</div>
+    <div class="full center results">{{topSegmentField.name | fieldDescription}} - {{topSegmentField.count}} - {{topSegmentField.percent}}%</div>
   </div>
 
   <div class="full vertical">

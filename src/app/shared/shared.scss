@@ -1,5 +1,5 @@
 
-
+//common styling applied to component view containers
 @mixin commonHost($borderColor:transparent) {
   :host{
     display: flex;

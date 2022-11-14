@@ -1,20 +1,19 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { PqvDataService } from '../data/data.service';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { PqvQualifiedVoterService } from '../qualified-voter.service';
 import { PqvCommonSharedModule } from 'src/app/shared/common-shared.module';
-import { WardRow } from '../data/model/WardRow.interface';
+import { WardRow } from '../model/interface/WardRow.interfaces';
 import { Subscription } from 'rxjs';
-
-import { PqvWardTotalsPipe } from '../transformations/ward-totals.pipe';
+import { PqvCategorySumCheckPipe } from '../transformations/category-sum-check';
 import { PqvFieldDescriptionPipe } from '../transformations/field-description.pipe';
 import { FormBuilder } from '@angular/forms';
-import { wardPrimaryFields } from '../data/model/wardPrimaryFields.model';
-import { PqvTotalsBySegmentPipe } from '../transformations/percent-by-segment.pipe';
+import { wardPrimaryFields } from '../model/wardPrimaryFields.model';
+import { PqvTotalsBySegmentPipe } from '../transformations/totals-by-segment.pipe';
 
 @Component({
   selector: 'pqv-details',
   standalone: true,
   imports: [PqvCommonSharedModule, PqvFieldDescriptionPipe, PqvTotalsBySegmentPipe],
-  providers: [PqvWardTotalsPipe],
+  providers: [PqvCategorySumCheckPipe],
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -25,19 +24,21 @@ export class PqvDetailsComponent implements OnInit {
   displayedColumns: string[] = ['ward', ...wardPrimaryFields.map(field=>field.name), 'percent'];
   wardPrimaryFields = wardPrimaryFields;
   constructor(
-    private dataService:PqvDataService,
+    private dataService:PqvQualifiedVoterService,
     private fb: FormBuilder,
-    private wardTotalsPipe: PqvWardTotalsPipe
+    private changeDectorRef: ChangeDetectorRef
     ) { }
   @Input() segment: string = '';
 
-  ngOnInit(): void {
-    this.$wardDataTable = this.dataService
-    .getData$()
+  async ngOnInit():Promise<void> {
+    this.$wardDataTable = (await this.dataService
+      .data$())
     .subscribe((wardDataTable) => {
-      this.wardDataTable = this.wardTotalsPipe.transform(wardDataTable);
+      this.wardDataTable = wardDataTable;
+      this.changeDectorRef.detectChanges();
     });
   }
+  
   ngOnDestroy():void{
     this.$wardDataTable?.unsubscribe();
   }

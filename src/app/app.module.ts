@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PqvPhilQualifiedComponent } from './feature/phil-qualified/phil-qualified.component';
+import { PqvQualifiedVoterComponent } from './feature/qualified-voter/qualified-voter.component';
 
 @NgModule({
   declarations: [
@@ -12,7 +11,7 @@ import { PqvPhilQualifiedComponent } from './feature/phil-qualified/phil-qualifi
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    PqvPhilQualifiedComponent
+    PqvQualifiedVoterComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

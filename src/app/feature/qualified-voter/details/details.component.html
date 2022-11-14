@@ -1,10 +1,6 @@
 <div class="center">
   <table mat-table [dataSource]="wardDataTable" class="mat-elevation-z8 table-full">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
+    
     <ng-container matColumnDef="ward">
       <th mat-header-cell *matHeaderCellDef>Ward</th>
       <td mat-cell *matCellDef="let element"> {{element.ward}}</td>

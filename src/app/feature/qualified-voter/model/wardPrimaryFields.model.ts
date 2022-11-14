@@ -1,3 +1,4 @@
+//fields exposed to the user
 export const wardPrimaryFields = [
   {name: 'dem'},
   {name: 'rep'},

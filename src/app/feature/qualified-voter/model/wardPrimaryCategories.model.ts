@@ -1,10 +1,4 @@
-
-interface WardCategory {
-  fields: string[];
-}
-interface WardCategories {
-  [key: string]: WardCategory;
-}
+import { WardCategories } from "./interface/WardCategories.interface";
 
 export const wardPrimaryCategories:WardCategories = {
   'party':{

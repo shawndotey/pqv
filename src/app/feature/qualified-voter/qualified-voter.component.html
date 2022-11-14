@@ -1,0 +1,3 @@
+  <pqv-summary (selectedSegment)="segmentUpdate($event)"></pqv-summary>
+  <!--Pass segment to details view-->
+  <pqv-details [segment]="(segment | async) || ''"></pqv-details>

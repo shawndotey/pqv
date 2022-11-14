@@ -1,27 +1,88 @@
-# Pqv
+# Overview
+### This project serves as a demo for Relay's Qualifed Voter 2018 Examination.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.3.
+## Prerequesites
+- [Install Angular Globally](https://angular.io/guide/setup-local)
+- Install npm packages from the project root:
+    ```
+    npm install
+    ```
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Running tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Project outline
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+This Angular application uses standalone components and pipes along with services provided
+in root as much as possible.
 
-## Further help
+The project structure is feature driven as follows:
+```
+./src/app
+├── app.component.html
+├── app.component.scss
+├── app.component.spec.ts
+├── app.component.ts
+├── app.module.ts
+├── feature
+        //main project code is here
+│   └── qualified-voter
+        // data provided by Relay
+│       ├── data
+│       │   ├── qualified_voter_listing_2018_primary_by_ward copy.json
+│       │   └── WARD_DATA.ts
+        //lower section details view
+│       ├── details
+│       │   ├── details.component.html
+│       │   ├── details.component.scss
+│       │   └── details.component.ts
+        //model objects and interfaces
+│       ├── model
+│       │   ├── interface
+│       │   │   ├── OverviewInfo.interface.ts
+│       │   │   ├── SegmentInfo.interface.ts
+│       │   │   ├── WardCategories.interface.ts
+│       │   │   ├── WardCategory.interface.ts
+│       │   │   └── WardRow.interfaces.ts
+│       │   ├── wardPrimaryCategories.model.ts
+│       │   ├── wardPrimaryFields.model.ts
+│       │   ├── wardRowCategory.model.ts
+│       │   └── wardRowDecription.model.ts
+        //top level of view, transfers data between compontents and
+        //serves as top level module for standalone components
+│       ├── qualified-voter.component.html
+│       ├── qualified-voter.component.scss
+│       ├── qualified-voter.component.ts
+│       ├── qualified-voter.service.spec.ts
+│       ├── qualified-voter.service.ts
+        //top section
+│       ├── summary
+│       │   ├── summary.component.html
+│       │   ├── summary.component.scss
+│       │   └── summary.component.ts
+        //mock data
+│       ├── test
+│       │   └── data
+│       │       └── qualified_voter_listing_2018_primary_by_ward.mock.json
+        //pipes mostly
+│       └── transformations
+│           ├── category-sum-check.ts
+│           ├── field-description.pipe.ts
+│           ├── top-segment.pipe.spec.ts
+│           ├── top-segment.pipe.ts
+│           └── totals-by-segment.pipe.ts
+    //shared between views
+└── shared
+    ├── common-shared.module.ts
+    └── shared.scss
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
