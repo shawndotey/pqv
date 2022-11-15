@@ -22,10 +22,9 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## Project outline
 
-This Angular application uses standalone components and pipes along with services provided
-in root as much as possible.
+This Angular 14 application uses standalone functionality as much as possible.
 
-The project structure is feature driven as follows:
+The project file structure is feature driven, as follows:
 ```
 ./src/app
 ├── app.component.html
@@ -80,7 +79,7 @@ The project structure is feature driven as follows:
 │           ├── top-segment.pipe.spec.ts
 │           ├── top-segment.pipe.ts
 │           └── totals-by-segment.pipe.ts
-    //shared between views
+    //shared between all views
 └── shared
     ├── common-shared.module.ts
     └── shared.scss
