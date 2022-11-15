@@ -74,6 +74,7 @@ The project file structure is feature driven, as follows:
 │       │       └── qualified_voter_listing_2018_primary_by_ward.mock.json
         //pipes mostly
 │       └── transformations
+            //category-sum-check.ts is used in testing only, it exposes
 │           ├── category-sum-check.ts
 │           ├── field-description.pipe.ts
 │           ├── top-segment.pipe.spec.ts
@@ -85,3 +86,10 @@ The project file structure is feature driven, as follows:
     └── shared.scss
 ```
 
+## Other Considerations
+
+`category-sum-check.ts` exposes an issue with the data 
+file provided (`qualified_voter_listing_2018_primary_by_ward.mock.json`);  
+The `race` category, summed per row, does not
+add up to the `total` provided. 
+You can see the issue in the `qualified-voter.service.spec.ts` file
